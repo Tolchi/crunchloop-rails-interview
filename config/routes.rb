@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :todo_lists, only: %i[index], path: :todolists do
       resources :todos, only: %i[create update destroy] do
         member do
-          post 'complete'
+          put 'complete'
         end
       end
     end

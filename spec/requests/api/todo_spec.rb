@@ -82,13 +82,13 @@ RSpec.describe "Todos", type: :request do
   end
 
   # COMPLETE
-  describe 'post /api/todolists/:todo_list_id/todos/:id/complete' do
+  describe 'put /api/todolists/:todo_list_id/todos/:id/complete' do
     context 'with existing todo list' do
       let!(:todo_list) { create(:todo_list) }
       context 'with exising todo' do
         let!(:todo) { create(:todo, todo_list: todo_list) }
 
-        before { post "/api/todolists/#{todo_list.id}/todos/#{todo.id}/complete"}
+        before { put "/api/todolists/#{todo_list.id}/todos/#{todo.id}/complete"}
 
         it 'returns ok' do
           expect(response).to have_http_status(:ok)
@@ -102,7 +102,7 @@ RSpec.describe "Todos", type: :request do
 
       context 'with non existing todo' do
         it 'returns not found' do
-          post "/api/todolists/#{todo_list.id}/todos/999/complete"
+          put "/api/todolists/#{todo_list.id}/todos/999/complete"
           expect(response).to have_http_status(:not_found)
         end
       end
@@ -110,7 +110,7 @@ RSpec.describe "Todos", type: :request do
 
     context 'with non existing todo list' do
       it 'returns not found' do
-        post '/api/todolists/999/todos/1/complete'
+        put '/api/todolists/999/todos/1/complete'
         expect(response).to have_http_status(:not_found)
       end
     end
