@@ -1,0 +1,23 @@
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+/usr/local/var/rbenv/versions/3.1.6/bin/ruby extconf.rb
+checking for termios.h... yes
+checking for cfmakeraw() in termios.h... yes
+checking for sys/ioctl.h... yes
+checking for HAVE_RUBY_FIBER_SCHEDULER_H... yes
+creating Makefile
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20250805-29826-ygmmgz sitelibdir\=./.gem.20250805-29826-ygmmgz clean
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20250805-29826-ygmmgz sitelibdir\=./.gem.20250805-29826-ygmmgz
+compiling console.c
+linking shared-object io/console.bundle
+ld: warning: ignoring duplicate libraries: '-lruby.3.1'
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20250805-29826-ygmmgz sitelibdir\=./.gem.20250805-29826-ygmmgz install
+/opt/homebrew/bin/ginstall -c -m 0755 console.bundle ./.gem.20250805-29826-ygmmgz/io
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
+make DESTDIR\= sitearchdir\=./.gem.20250805-29826-ygmmgz sitelibdir\=./.gem.20250805-29826-ygmmgz clean

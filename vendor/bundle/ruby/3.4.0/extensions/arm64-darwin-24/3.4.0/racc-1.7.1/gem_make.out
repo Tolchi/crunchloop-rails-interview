@@ -1,0 +1,20 @@
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.4.0/gems/racc-1.7.1/ext/racc/cparse
+/usr/local/var/rbenv/versions/3.4.5/bin/ruby extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.4.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250805-32831-ggwucy sitelibdir\=./.gem.20250805-32831-ggwucy clean
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.4.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250805-32831-ggwucy sitelibdir\=./.gem.20250805-32831-ggwucy
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.4.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250805-32831-ggwucy sitelibdir\=./.gem.20250805-32831-ggwucy install
+/opt/homebrew/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20250805-32831-ggwucy/racc
+
+current directory: /Users/sheep/Z/rails/crunchloop-rails-interview/vendor/bundle/ruby/3.4.0/gems/racc-1.7.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250805-32831-ggwucy sitelibdir\=./.gem.20250805-32831-ggwucy clean

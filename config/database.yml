@@ -1,5 +1,5 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
   host: 127.0.0.1
   username: postgres
