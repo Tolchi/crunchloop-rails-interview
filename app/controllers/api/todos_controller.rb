@@ -32,7 +32,7 @@ module Api
     private
 
     def set_todo_list
-      @todo_list = TodoList.find(params[:todo_list_id])
+      @todo_list = TodoList.includes(:todos).find(params[:todo_list_id])
     rescue ActiveRecord::RecordNotFound
       render json: { errors: 'Todo list not found' }, status: :not_found
     end
