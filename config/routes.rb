@@ -5,9 +5,20 @@ Rails.application.routes.draw do
         member do
           put 'complete'
         end
+        collection do
+          put 'complete_all'
+        end
       end
     end
   end
 
-  resources :todo_lists, only: %i[index new], path: :todolists
+  resources :todo_lists, only: %i[index new show], path: :todolists do
+    resources :todos do
+      member do
+        put 'complete'
+      end
+    end
+  end
+
+  root to: 'todo_lists#index'
 end

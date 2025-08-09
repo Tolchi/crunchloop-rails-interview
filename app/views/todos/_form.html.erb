@@ -1,0 +1,6 @@
+<%= form_with(model: [@todo_list, @todo]) do |f| %>
+  <%= f.hidden_field :todo_list_id %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.button :submit %>
+<% end %>

@@ -12,21 +12,20 @@ module Api
       end
     end
 
-    def update
-      respond_to :json
-    end
-
     def destroy
       @todo.destroy!
       head :no_content
     end
 
     def complete
-      if @todo.update(completed: true)
-        render json: { message: 'Todo completed' }, status: :ok
-      else
-        render json: @todo.errors, status: :unprocessable_entity
-      end
+      @todo.update(completed: true)
+      render json: { message: 'Todo completed' }, status: :ok
+    end
+
+    def complete_all
+      todos_ids = @todo_list.todos.pluck(:id)
+      CompleteAllJob.perform_later(todos_ids)
+      render json: { message: 'Complete All todos job was enqueued. A few moments later, the job will be done.' }, status: :ok
     end
 
     private

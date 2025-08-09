@@ -33,3 +33,7 @@ rails_interview_test
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+# SimpleCov coverage stuff
+/coverage
+
+/vendor/bundle/ruby

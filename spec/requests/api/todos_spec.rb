@@ -88,7 +88,7 @@ RSpec.describe "Todos", type: :request do
       context 'with exising todo' do
         let!(:todo) { create(:todo, todo_list: todo_list) }
 
-        before { put "/api/todolists/#{todo_list.id}/todos/#{todo.id}/complete"}
+        before { put "/api/todolists/#{todo_list.id}/todos/#{todo.id}/complete" }
 
         it 'returns ok' do
           expect(response).to have_http_status(:ok)
@@ -113,6 +113,23 @@ RSpec.describe "Todos", type: :request do
         put '/api/todolists/999/todos/1/complete'
         expect(response).to have_http_status(:not_found)
       end
+    end
+  end
+
+  describe 'Complete all todos' do
+    let!(:todo_list) { create(:todo_list) }
+    let!(:todos) { create_list(:todo, 3, todo_list: todo_list) }
+    let(:todo_ids) { todos.pluck(:id) }
+
+    it 'enqueue CompleteAllJob que' do
+      expect {
+        put "/api/todolists/#{todo_list.id}/todos/complete_all"
+      }.to have_enqueued_job(CompleteAllJob).with(todo_ids)
+    end
+
+    it 'returns succesful enqueue message' do
+      put "/api/todolists/#{todo_list.id}/todos/complete_all"
+      expect(response).to have_http_status(:ok)
     end
   end
 end

@@ -1,0 +1,9 @@
+<%= turbo_stream_from "todos" %>
+<%= turbo_frame_tag "#{dom_id(todo)}" do %>
+  <li>
+    <p class="<%= 'line-through' if todo.completed %>">
+      <%= todo.description %>
+    </p>
+    <%= check_box_tag 'completed', todo.completed, todo.completed, data: { id: todo.id, todo_list_id: todo.todo_list_id, controller: 'complete', action: 'complete#complete'}%>
+  </li>
+<% end %>
