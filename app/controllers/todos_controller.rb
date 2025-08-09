@@ -1,45 +1,19 @@
 class TodosController < ApplicationController
   before_action :set_todo_list
-  before_action :set_todo, only: %i[show destroy edit update complete]
-
-  def show
-  end
+  before_action :set_todo, only: :complete
 
   def create
     @todo = @todo_list.todos.new(todo_params)
-    if @todo.save
+    if @todo.save!
       respond_to do |format|
         format.html { redirect_to @todo_list }
         format.turbo_stream do
           render turbo_stream: turbo_stream.append(:todos, partial: "todos/todo", locals: { todo: @todo })
         end
       end
-    else
-      render :new
     end
-  end
-
-  def new
-    @todo = Todo.new
-  end
-
-  def destroy
-  end
-
-  def update
-    if @todo.update(todo_params)
-      respond_to do |format|
-        format.html { redirect_to @todo_list }
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.append(:todos, partial: "todos/todo", locals: { todo: @todo })
-        end
-      end
-    else
-      render :edit
-    end
-  end
-
-  def edit
+  rescue ActiveRecord::RecordInvalid
+    redirect_to :root_path, alert: "Could not be created a todo"
   end
 
   def complete
@@ -58,6 +32,7 @@ class TodosController < ApplicationController
   end
 
   def set_todo
+	flash.now[:notice] = "Todo was updated succesfully"
     @todo = @todo_list.todos.find(params[:id])
   end
 

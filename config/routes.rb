@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :todo_lists, only: %i[index create destroy show], path: :todolists do
-    resources :todos do
+  resources :todo_lists, only: %i[create show], path: :todolists do
+    resources :todos, only: [:create] do
       member do
         put 'complete'
       end

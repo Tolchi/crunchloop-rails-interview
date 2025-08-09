@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="prose prose:slate lg:prose-xl">
+    <%= render "shared/flash_messages" %>
+    <main class="prose prose:slate lg:prose-xl mx-auto">
       <div class="antialiased text-gray-900 px-6">
-        <div class="max-w-xl mx-auto py-12 divide-y md:max-w-4xl">
+        <div class="max-w-xl mx-auto py-2 divide-y md:max-w-4xl">
           <%= yield %>
         </div>
       </div>

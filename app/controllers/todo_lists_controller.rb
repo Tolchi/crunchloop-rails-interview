@@ -1,5 +1,5 @@
 class TodoListsController < ApplicationController
-  before_action :set_todo_list, only: %i[show update destroy]
+  before_action :set_todo_list, only: %i[show]
   # GET /todolists
   def index
     @todo_lists = TodoList.all
@@ -13,24 +13,17 @@ class TodoListsController < ApplicationController
     @todo = Todo.new
   end
 
-  # GET /todolists/new
-  def new
-    @todo_list = TodoList.new
-
-    respond_to :html
-  end
-
   def create
     @todo_list = TodoList.new(todo_list_params)
-    if @todo_list.save
+    if @todo_list.save!
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.append(:todo_lists, partial: "todo_lists/todo_list", locals: { todo_list: @todo_list })
         end
       end
-    else
-      render :new
     end
+  rescue ActiveRecord::RecordInvalid
+    redirect_to :root_path, alert: "Could not be created a todo list"
   end
 
   private
