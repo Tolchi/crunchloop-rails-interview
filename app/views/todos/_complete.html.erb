@@ -1,0 +1,5 @@
+<%= turbo_stream.remove dom_id(todo) %>
+
+<%= turbo_stream.prepend "todos" do %>
+  <%= render partial: "todos/todo", locals: { todo: todo } %>
+<% end %>

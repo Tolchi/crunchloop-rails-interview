@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   before_action :set_todo_list
-  before_action :set_todo, only: %i[show destroy update complete]
+  before_action :set_todo, only: %i[show destroy edit update complete]
 
   def show
   end
@@ -20,6 +20,7 @@ class TodosController < ApplicationController
   end
 
   def new
+    @todo = Todo.new
   end
 
   def destroy
@@ -42,9 +43,11 @@ class TodosController < ApplicationController
   end
 
   def complete
-    @todo.update(completed: true)
+    @todo.update(completed: !@todo.completed)
     respond_to do |format|
-      format.turbo_stream { render partial: 'todos/todo', locals: { todo: @todo } }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.append(:todos, partial: "todos/complete", locals: { todo: @todo })
+      end
     end
   end
 

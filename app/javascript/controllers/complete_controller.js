@@ -9,17 +9,19 @@ export default class extends Controller {
 
   complete(event) {
     const id = event.target.dataset.id
+    const todoListId = event.target.dataset.todoListId
     const csrfToken = document.querySelector("[name='csrf-token']").content
 
-    fetch('/todolists/${todo_list_id}/todo/${id}/complete', {
-      method: 'PUT', 
+    fetch(`/todolists/${todoListId}/todos/${id}/complete`, {
+      method: 'PUT',
       mode: 'cors',
       cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-        'Content-type': 'application/json',
+        'Content-Type': 'application/json',
         'X-CSRF-Token': csrfToken
-      }
+      },
+      body: JSON.stringify({ completed: event.target.checked })
     })
       .then(response => response.text())
       .then(Turbo.renderStreamMessage)
