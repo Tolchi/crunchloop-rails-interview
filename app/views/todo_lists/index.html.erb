@@ -1,9 +1,10 @@
-<%= link_to 'Add Todo List', new_todo_list_path %>
+<%= turbo_stream_from "todo_lists" %>
+<h2>Add Todo List</h2>
+<%= render partial: 'todo_lists/form', locals: { todo_list: @todo_list } %>
 
+<h3>Todo lists</h3>
 <div>
-  <% @todo_lists.each do |todo_list| %>
-    <div>
-      <%= link_to "##{ todo_list.id } | #{ todo_list.name }", todo_list_path(todo_list) %>
-    </div>
-  <% end %>
+  <ul id="todo_lists" class="p-2 text-gray-700">
+    <%= render partial: 'todo_list', collection: @todo_lists %>
+  </ul>
 </div>

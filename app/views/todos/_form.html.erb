@@ -1,6 +1,15 @@
-<%= form_with(model: [@todo_list, @todo]) do |f| %>
-  <%= f.hidden_field :todo_list_id %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.button :submit %>
-<% end %>
+<div class="py-12 max-w-md">
+  <%= form_with model: [@todo_list, @todo], data: { controller: "form-control", action: 'turbo:submit-end->form-control#clear' } do |f| %>
+    <div class="inline-grid grid-cols-2 gap-6">
+      <%= f.hidden_field :todo_list_id %>
+      <span>
+        <span class="text-gray-700">description</span>
+        <%= f.text_field :description, class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50", placeholder: "Todo description", data: { form_control_target: "input", action: "input->form-control#toggleButton" } %>
+      </span>
+      <span>
+        <span class="pb-1">&nbsp;</span><br />
+        <%= f.submit "Create todo", class: "mt-1 h-[47px] block w-full rounded-sm bg-sky-500 shadow-sm focus:bg-sky-300 focus:ring focus:ring-sky-300 focus:ring-opacity-50 hover:bg-sky-300 hover:ring-sky-300 hover:ring-opacity-70", data: { form_control_target: "submit" } %>
+      </span>
+    </div>
+  <% end %>
+</div>

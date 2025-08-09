@@ -3,6 +3,7 @@ class TodoListsController < ApplicationController
   # GET /todolists
   def index
     @todo_lists = TodoList.all
+    @todo_list = TodoList.new
 
     respond_to :html
   end
@@ -21,6 +22,15 @@ class TodoListsController < ApplicationController
 
   def create
     @todo_list = TodoList.new(todo_list_params)
+    if @todo_list.save
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append(:todo_lists, partial: "todo_lists/todo_list", locals: { todo_list: @todo_list })
+        end
+      end
+    else
+      render :new
+    end
   end
 
   private
@@ -30,6 +40,6 @@ class TodoListsController < ApplicationController
   end
 
   def todo_list_params
-    params.permit(:name)
+    params.require(:todo_list).permit(:name)
   end
 end

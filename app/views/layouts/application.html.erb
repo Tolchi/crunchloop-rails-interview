@@ -11,8 +11,12 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+    <main class="prose prose:slate lg:prose-xl">
+      <div class="antialiased text-gray-900 px-6">
+        <div class="max-w-xl mx-auto py-12 divide-y md:max-w-4xl">
+          <%= yield %>
+        </div>
+      </div>
     </main>
   </body>
 </html>

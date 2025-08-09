@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "#{dom_id(todo_list)}", class: "block" do %>
+  <li>
+    <%= link_to todo_list.name, todo_list, class: "hover:text-gray-300 forcus:text-gray-300", data: {turbo_frame: "_top"} %>
+  </li>
+<% end %>

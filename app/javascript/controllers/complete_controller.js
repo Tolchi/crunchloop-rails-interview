@@ -4,7 +4,6 @@ import { Turbo } from "@hotwired/turbo-rails"
 // Connects to data-controller="complete"
 export default class extends Controller {
   connect() {
-    console.log('Complted controller connected')
   }
 
   complete(event) {

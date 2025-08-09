@@ -1,7 +1,6 @@
 <%= turbo_stream_from @todo_list %>
 <h2><%= @todo_list.name %> details page</h2>
 
-
 <h3>New todo</h3>
 <%= render partial: "todos/form", locals: { todo_list_id: @todo_list.id } %>
 
