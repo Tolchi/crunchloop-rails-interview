@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "@tailwindcss/aspect-ratio";
+@import "tailwindcss/plugin";
+@import "@tailwindcss/container-queries";
+@import "@tailwindcss/forms";
+@import "mini-svg-data-uri";
+@import "tailwindcss/colors";
+@import "tailwindcss/defaultTheme";
+@import "@tailwindcss/typography";

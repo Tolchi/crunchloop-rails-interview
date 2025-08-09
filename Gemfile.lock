@@ -238,6 +238,12 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    tailwindcss-rails (4.3.0)
+      railties (>= 7.0.0)
+      tailwindcss-ruby (~> 4.0)
+    tailwindcss-ruby (4.1.11-arm64-darwin)
+    tailwindcss-ruby (4.1.11-x86_64-darwin)
+    tailwindcss-ruby (4.1.11-x86_64-linux-gnu)
     thor (1.2.1)
     timeout (0.3.2)
     turbo-rails (1.4.0)
@@ -288,6 +294,8 @@ DEPENDENCIES
   simplecov
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 4.3)
+  tailwindcss-ruby (~> 4.1)
   turbo-rails
   tzinfo-data
   web-console
